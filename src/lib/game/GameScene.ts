@@ -37,6 +37,9 @@ export default class GameScene extends Phaser.Scene {
     centerY = 416;
     gap = 310;
 
+    durationCarosel = 1500;
+
+
     constructor() {
         super("GameScene")
     }
@@ -164,7 +167,7 @@ export default class GameScene extends Phaser.Scene {
             this.tweens.add({
                 targets: item,
                 alpha: 1,
-                duration: 1500
+                duration: this.durationCarosel <= 500 ? this.durationCarosel : 500
             });
         });
         this.moveCarousel();
@@ -182,7 +185,7 @@ export default class GameScene extends Phaser.Scene {
             this.tweens.add({
                 targets: item,
                 y: targetY,
-                duration: 1500,
+                duration: this.durationCarosel <= 500 ? this.durationCarosel : 500,
                 ease: "Cubic.easeInOut",
                 onUpdate: () => {
                     const distance = Math.abs(item.y - this.centerY);
@@ -304,19 +307,23 @@ export default class GameScene extends Phaser.Scene {
             if (result === "perfect") {
                 this.point.push(1);
                 this.perfectPoint.push(100);
+                this.durationCarosel = this.durationCarosel - 50;
                 this.comboText.setText("PERFECT!").setColor("#00ff00");
                 this.animateSuccess();
             } else if (result === "great") {
                 this.point.push(1);
                 this.greatPoint.push(50);
+                this.durationCarosel = this.durationCarosel - 50;
                 this.comboText.setText("GREAT!").setColor("#00ffff");
             } else if (result === "good") {
                 this.point.push(1);
                 this.goodPoint.push(20);
+                this.durationCarosel = this.durationCarosel - 50;
                 this.comboText.setText("GOOD").setColor("#ffff00");
             } else {
                 this.point = [];
                 this.missPoint.push(0);
+                this.durationCarosel = 1500;
                 this.comboText.setText("MISS!").setColor("#ff0000");
             }
 
