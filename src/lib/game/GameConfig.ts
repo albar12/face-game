@@ -9,8 +9,11 @@ export const createGame = async (parent: string) => {
 
         type: Phaser.default.AUTO,
 
-        width: window.innerWidth,
-        height: window.innerHeight,
+        // width: window.innerWidth,
+        // height: window.innerHeight,
+
+        width: 1024,
+        height: 768,
 
         parent: parent,
 

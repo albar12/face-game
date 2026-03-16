@@ -5,24 +5,29 @@ export default class SummaryScene extends Phaser.Scene {
         super("SummaryScene");
     }
 
+    preload() {
+        this.load.image("curtain_full", "/src/lib/assets/img_curtain_background.png");
+    }
+
     // Menerima data dari scene sebelumnya
     create(data: any) {
         const { width, height } = this.scale;
+        const centerX = width / 2;
 
         // 1. Background (Gunakan gambar gorden/curtain jika ada)
-        const bg = this.add.image(width / 2, height / 2, "bg");
+        const bg = this.add.image(width / 2, height / 2, "curtain_full");
         bg.setDisplaySize(width, height).setTint(0x999999); // Gelapkan sedikit
 
         // 2. Konfigurasi Gaya Teks
         const labelStyle = {
-            fontFamily: "Arial",
+            fontFamily: '"Permanent Marker"',
             fontSize: "60px",
             color: "#ffffff",
             fontStyle: "bold"
         };
 
         const valueStyle = {
-            fontFamily: "Arial",
+            fontFamily: '"Permanent Marker"',
             fontSize: "70px",
             color: "#ffffff",
             fontStyle: "bold"

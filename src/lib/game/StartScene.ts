@@ -8,6 +8,7 @@ export default class StartScene extends Phaser.Scene {
     preload() {
         this.load.image("curtain_left", "/src/lib/assets/img_curtain_background_left.png");
         this.load.image("curtain_right", "/src/lib/assets/img_curtain_background_right.png");
+        this.load.image("curtain_full", "/src/lib/assets/img_curtain_background.png");
         this.load.image("bg_stage", "/src/lib/assets/img_background.png");
     }
 
